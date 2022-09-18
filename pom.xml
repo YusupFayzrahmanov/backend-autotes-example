@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>example.com.backend.autotest</groupId>
+    <artifactId>autotest-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>autotest-common</module>
+        <module>autotest-example</module>
+    </modules>
+
+    <properties>
+        <java.version>11</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+
+        <!-- Dependencies -->
+        <lombok.version>1.18.24</lombok.version>
+        <spring-boot.version>2.6.4</spring-boot.version>
+        <logbook.version>2.4.1</logbook.version>
+        <jackson-bom.version>2.13.1</jackson-bom.version>
+        <postgres.version>42.3.1</postgres.version>
+        <rest-assured.version>4.5.1</rest-assured.version>
+        <json-schema-validator.version>2.9.0</json-schema-validator.version>
+        <allure-rest-assured.version>2.17.3</allure-rest-assured.version>
+        <aspectj.version>1.9.6</aspectj.version>
+        <commons-io.version>2.4</commons-io.version>
+        <commons-text.version>1.9</commons-text.version>
+        <jackson-databind-nullable.version>0.2.2</jackson-databind-nullable.version>
+        <jackson-datatype-threetenbp.version>2.9.10</jackson-datatype-threetenbp.version>
+        <javafaker.version>1.0.2</javafaker.version>
+        <swagger-annotation.version>1.6.5</swagger-annotation.version>
+        <org.everit.json.schema.version>1.5.1</org.everit.json.schema.version>
+
+        <!-- Test dependencies -->
+        <testng.version>7.5</testng.version>
+        <allure-testng.version>2.17.3</allure-testng.version>
+
+        <!-- Plugins -->
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
+        <openapi-generator.version>5.4.0</openapi-generator.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.zalando</groupId>
+                <artifactId>logbook-bom</artifactId>
+                <version>${logbook.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>example.com.backend.autotest</groupId>
+                <artifactId>autotest-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>example.com.backend.autotest</groupId>
+                <artifactId>autotest-example</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger-annotation.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-text</artifactId>
+                <version>${commons-text.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.openapitools</groupId>
+                <artifactId>jackson-databind-nullable</artifactId>
+                <version>${jackson-databind-nullable.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.joschi.jackson</groupId>
+                <artifactId>jackson-datatype-threetenbp</artifactId>
+                <version>${jackson-datatype-threetenbp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-rest-assured</artifactId>
+                <version>${allure-rest-assured.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${postgres.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.everit.json</groupId>
+                <artifactId>org.everit.json.schema</artifactId>
+                <version>${org.everit.json.schema.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-beanutils</groupId>
+                        <artifactId>commons-beanutils</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!--Data faker and generators-->
+            <dependency>
+                <groupId>com.github.javafaker</groupId>
+                <artifactId>javafaker</artifactId>
+                <version>${javafaker.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+                <version>${testng.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-testng</artifactId>
+                <version>${allure-testng.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                        <encoding>UTF-8</encoding>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.openapitools</groupId>
+                    <artifactId>openapi-generator-maven-plugin</artifactId>
+                    <version>${openapi-generator.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
